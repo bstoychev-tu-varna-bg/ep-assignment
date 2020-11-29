@@ -1,0 +1,78 @@
+function_definition     : FUNCTION IDENTIFIER LPAREN ( formal_parameters )? RPAREN ( RETURNS type )? code_block
+
+formal_parameters       : type IDENTIFIER ( COMMA type IDENTIFIER )*
+
+type                    : primitive_type | array_type
+
+primitive_type          : INT | BOOL
+
+array_type              : primitive_type LSQUARE RSQUARE
+
+code_block              : LBRACKET ( statement )* RBRACKET
+
+statement               : simple_statement SEMICOLON | compound_statement
+
+simple_statement        : variable_definition | assignment | function_call | return_statement
+
+compound_statement      : if_statement | while_statement | for_statement
+
+variable_definition     : type assignment
+
+assignment              : variable BECOMES assignable
+
+function_call           : IDENTIFIER LPAREN ( actual_parameters )? RPAREN
+
+return_statement        : RETURN ( assignable )?
+
+if_statement            : IF expression code_block
+                        | IF expression code_block ELSEIF expression code_block
+                        | IF expression code_block ELSE code_block
+
+while_statement         : WHILE expression block
+
+for_statement           : FOR LPAREN variable_definition SEMICOLON IDENTIFIER relational_operator IDENTIFIER SEMICOLON ( INCREMENT | DECREMENT ) code_block
+                        | FOR variable_definition IN IDENTIFIER code_block
+
+switch_statement        : SWITCH LPAREN IDENTIFIER RPAREN LBRACKET ( CASE IDENTIFIER code_block BREAK )* ( DEFAULT code_block)?
+
+actual_parameters       : assignable ( COMMA assignable )*
+
+assignable              : array_initialization
+                        | expression
+
+array_initialization    : primitive_type LSQUARE expression RSQUARE
+
+expression              : simple_expression
+                        | simple_expression relational_operator simple_expression
+
+simple_expression       : signed_term ( ( additive_operator | OR ) signed_term )*
+
+signed_term             : (unary_operator)? term
+
+term                    : factor ( ( multiplicative_operator | AND ) factor )*
+
+factor                  : variable
+                        | INT_LITERAL
+                        | BOOL_LITERAl
+                        | LPAREN expression RPAREN
+                        | function_call
+
+relational_operator     : EQUAL
+                        | NOT_EQUAL
+                        | GREATER_THAN
+                        | LESS_THAN
+                        | GREATER_THAN_OR_EQUAL
+                        | LESS_THAN_OR_EQUAL
+
+unary_operator          : NOT
+
+additive_operator       : PLUS
+                        | MINUS | INCREMENT | DECREMENT | MUL_ASSIGNMENT | PLUS_ASSIGNMENT | MINUS_ASSIGNMENT
+
+multiplicative_operator : MUL
+                        | DIV
+
+variable                : IDENTIFIER
+                        | index_variable
+
+index_variable          : IDENTIFIER LSQUARE simple_expression RSQUARE

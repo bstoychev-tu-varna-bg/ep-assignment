@@ -1,0 +1,58 @@
+//Keywords
+INT                     :   'int'
+BOOL                    :   'boolean'
+WHILE                   :   'while'
+RETURN                  :   'return'
+RETURNS                 :   'returns'
+IF                      :   'if'
+ELSE                    :   'else'
+ELSEIF                  :   'elseif'
+TRUE                    :   'true'
+FALSE                   :   'false'
+SWITCH                  :   'switch'
+CASE                    :   'case'
+DEFAULT                 :   'default'
+FOR                     :   'for'
+IN                      :   'in'
+FUNCTION                :   'function'
+BREAK                   :   'break'
+
+//Operators
+PLUS                    :   '+'
+MINUS                   :   '-'
+MUL                     :   '*'
+DIV                     :   '/'
+ASSIGNMENT              :   '='
+INCREMENT               :   '++'
+DECREMENT               :   '--'
+
+NOT                     :   'not'
+EQUAL                   :   '=='
+NOT_EQUAL               :   '!='
+GREATER_THAN            :   '>'
+LESS_THAN               :   '<'
+GREATER_THAN_OR_EQUAL   :   '>='
+LESS_THAN_OR_EQUAL      :   '<='
+
+AND                     :   'and'
+OR                      :   'or'
+MUL_ASSIGNMENT          :   '*='
+PLUS_ASSIGNMENT         :   '+='
+MINUS_ASSIGNMENT        :   '-='
+
+LSQUARE                 :   '['
+RSQUARE                 :   ']'
+LBRACKET                :   '{'
+RBRACKET                :   '}'
+LPAREN                  :   '('
+RPAREN                  :   ')'
+SEMICOLON               :   ';'
+COMMA                   :   ','
+
+//Literals
+INT LITERAL             :   '0' | [1-9]{1}[0-9]*
+CHAR_LITERAL            :   any ascii character
+BOOL_LITERAL            :   'true' | 'false'
+
+//Identifiers
+IDENTIFIER              :   [A-Za-z]{1}[A-Za-z0-9]*
